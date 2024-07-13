@@ -1,4 +1,3 @@
-
 import time
 import json
 import logging
@@ -7,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, WebDriverException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import colorlog
 
 # Logging configuration
@@ -102,7 +101,7 @@ def create_employee_record(driver, employee_data):
 
         # Selecting Department
         department_dropdown = WebDriverWait(driver, 30).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "div[aria-label='Select'] svg")))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)")))
         department_dropdown.click()
 
         department_option = WebDriverWait(driver, 30).until(EC.element_to_be_clickable(
@@ -111,7 +110,7 @@ def create_employee_record(driver, employee_data):
 
         # Selecting Designation
         designation_dropdown = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR,
-                                                                                           "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > span:nth-child(3)")))
+                                                                                           "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)")))
         designation_dropdown.click()
 
         time.sleep(2)  # Waiting for dropdown to populate
@@ -121,9 +120,7 @@ def create_employee_record(driver, employee_data):
         designation_option.click()
 
         # Entering Date of Joining (DOJ)
-        driver.find_element(By.XPATH,
-                            "/html/body/div[1]/div/div[2]/div[2]/div/form/div[2]/div/div[2]/div[3]/div/div[2]/span/input").send_keys(
-            employee_data['dateOfJoining'])
+        doj = driver.find_element(By.CSS_SELECTOR,"input[placeholder='Select Date of Joining']").send_keys(employee_data['dateOfJoining'])
 
         # Entering Permanent Address
         driver.find_element(By.CSS_SELECTOR, "#permanentAddress").send_keys(employee_data['permanentAddress'])
@@ -137,6 +134,9 @@ def create_employee_record(driver, employee_data):
         # Entering Contact Number 2
         driver.find_element(By.CSS_SELECTOR, "#contactNumber2").send_keys(employee_data['contactNumber2'])
 
+        # Emergency Contact Number
+        driver.find_element(By.CSS_SELECTOR, "#emergencyContact").send_keys(employee_data['emrtcontact'])
+
         # Entering Email
         driver.find_element(By.CSS_SELECTOR, "#email1").send_keys(employee_data['email'])
 
@@ -148,13 +148,24 @@ def create_employee_record(driver, employee_data):
         driver.find_element(By.CSS_SELECTOR, "#panNumber").send_keys(employee_data['panNumber'])
         logger.info("Entered PAN number.")
 
-        # Entering Bank Name
-        driver.find_element(By.CSS_SELECTOR, "#bankName").send_keys(employee_data['bankName'])
-        logger.info("Entered bank name.")
+        # Bank name dropdown click
+        bank_name_dropdown = WebDriverWait(driver, 30).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div[aria-label='Select an Bank Name']")))
+        bank_name_dropdown.click()
 
-        # Entering IFSC Code
-        driver.find_element(By.CSS_SELECTOR, "#ifscCode").send_keys(employee_data['ifscCode'])
-        logger.info("Entered IFSC code.")
+        bank_names = WebDriverWait(driver, 30).until(
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item")))
+
+        for bank in bank_names:
+            if bank.text.strip() == employee_data['bankName']:
+                bank.click()
+                logger.info(f"Selected bank name: {employee_data['bankName']}")
+                break
+        else:
+            logger.warning(f"Bank name {employee_data['bankName']} not found in the dropdown.")
+
+        ifsc = driver.find_element(By.CSS_SELECTOR,"#ifscCode")
+        ifsc.send_keys((employee_data['ifscCode']))
 
         # Entering UAN Number
         driver.find_element(By.CSS_SELECTOR, "#uanNumber").send_keys(employee_data['uanNumber'])
@@ -180,8 +191,8 @@ def create_employee_record(driver, employee_data):
         logger.error("Timeout occurred during the process: %s", e)
     except NoSuchElementException as e:
         logger.error("Element not found: %s", e)
-    except WebDriverException as e:
-        logger.error("WebDriver exception occurred: %s", e)
+    except Exception as e:
+        logger.error("Error occurred: %s", e)
 
 def main():
     """ Main function to automate creation of employee records from JSON data """
@@ -197,8 +208,6 @@ def main():
         logger.info("Clicked on Master menu.")
 
         # Click on Employee Master submenu
-
-
         logger.info("Waiting for Employee Master submenu...")
         employee_master_submenu = WebDriverWait(driver, 30).until(
             EC.element_to_be_clickable((By.LINK_TEXT, "Employee master")))
@@ -219,4 +228,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
