@@ -43,7 +43,7 @@ employee_master_submenu = driver.find_element(By.CSS_SELECTOR, "li[aria-label='E
 employee_master_submenu.click()
 
 # Click on New Employee button
-new_employee_button = driver.find_element(By.CSS_SELECTOR, "#addNewEmployee")
+new_employee_button = driver.find_element(By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(2) > button:nth-child(1)")
 new_employee_button.click()
 
 # Wait for the Employee Information page to load
@@ -123,7 +123,7 @@ for plant in plant_list:
 
 # Department
 department_dropdown = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Select']"))
+    EC.element_to_be_clickable((By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)"))
 )
 department_dropdown.click()
 
@@ -149,8 +149,10 @@ for department in department_list:
 
 time.sleep(5)
 
+# Designation
+
 designation_dropdown = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.CSS_SELECTOR, "div[class='p-fluid pt-2'] span[class='p-dropdown-label p-inputtext p-placeholder']"))
+    EC.element_to_be_clickable((By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)"))
 )
 designation_dropdown.click()
 

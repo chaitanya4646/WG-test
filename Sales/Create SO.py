@@ -75,13 +75,13 @@ dropdown_type_results = wait.until(EC.presence_of_all_elements_located((By.CSS_S
 
 # Select desired product type from dropdown
 for result in dropdown_type_results:
-    if "Type 1" in result.text:
+    if "Top Loading arm" in result.text:
         result.click()
         break
 
 # Product
 
-driver.find_element(By.CSS_SELECTOR,"#product").send_keys("Loading arms")
+driver.find_element(By.CSS_SELECTOR,"#product").send_keys("Top Loading arm")
 
 # Order type
 
@@ -123,9 +123,14 @@ dropdown_type_results = wait.until(EC.presence_of_all_elements_located((By.CSS_S
 
 # Select desired product type from dropdown
 for result in dropdown_type_results:
-    if "LD Clause" in result.text:
+    if "Delivery Date based on “Approval of Documents”" in result.text:
         result.click()
         break
+
+# Delivery days
+
+driver.find_element(By.ID,"deliveryDays").send_keys("10")
+
 driver.find_element(By.CSS_SELECTOR,"#qualityRemark").send_keys("Must tested with Iron")
 
 # Submit
