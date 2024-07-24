@@ -85,7 +85,7 @@ for order_number in range(1, num_sales_orders + 1):
 
         # Select desired product type from dropdown
         for result in dropdown_type_results:
-            if "Type 1" in result.text:
+            if "Top Loading arm" in result.text:
                 result.click()
                 break
 
@@ -131,7 +131,7 @@ for order_number in range(1, num_sales_orders + 1):
 
         # Select desired product type from dropdown
         for result in dropdown_type_results:
-            if "LD Clause" in result.text:
+            if "Delivery Date based on “Approval of Documents”" in result.text:
                 result.click()
                 break
 

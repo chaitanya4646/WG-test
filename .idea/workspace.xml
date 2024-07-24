@@ -4,29 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6da84af0-5fec-43e6-a647-d3c622185f44" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Woodfield Data Connect.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/easycode.ignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/easycode/codebase-v2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HR/Create multiple employee.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HR/CreateEmpJson.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HR/CreateSingleEmp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HR/Login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HR/employee_data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Portal/Incode.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sales/Create SO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sales/MultipleSO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sales/SOMultipleitem.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sales/SO_Send_Approval.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scrap code/CreateEmpmaster.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scrap code/Employee master.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Superadmin/Create company.py" afterDir="false" />
+    <list default="true" id="6da84af0-5fec-43e6-a647-d3c622185f44" name="Changes" comment="Emp master creation using json data">
+      <change afterPath="$PROJECT_DIR$/HR/createEmployeeAuto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PlantAdmin/CreateErpUser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HR/CreateSingleEmp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HR/employee_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/HR/employee_data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HR/final Employee master.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sales/Approve SO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sales/Approve SO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sales/Create SO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sales/Create SO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sales/MultipleSO.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sales/MultipleSO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sales/SO_Send_Approval.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sales/SO_Send_Approval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrap code/CreateEmpmaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrap code/CreateEmpmaster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrap code/Employee master.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrap code/Employee master.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +31,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Create_SO_Checklist" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -56,32 +51,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Create SO.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Create company (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.Create company.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Create multiple employee.executor&quot;: &quot;Run&quot;,
-    &quot;Python.CreateEmpJson.executor&quot;: &quot;Run&quot;,
-    &quot;Python.CreateEmpmaster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.CreateSingleEmp.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Employee master.executor&quot;: &quot;Run&quot;,
-    &quot;Python.FunctionsDemo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Incode.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MultipleSO.executor&quot;: &quot;Run&quot;,
-    &quot;Python.SOMultipleitem.executor&quot;: &quot;Run&quot;,
-    &quot;Python.SO_Send_Approval.executor&quot;: &quot;Run&quot;,
-    &quot;Python.createsingleemp.executor&quot;: &quot;Run&quot;,
-    &quot;Python.emp mastr test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.python datatypes.executor&quot;: &quot;Run&quot;,
-    &quot;Python.string in python.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Approve SO.executor": "Run",
+    "Python.Create SO.executor": "Run",
+    "Python.Create company (1).executor": "Run",
+    "Python.Create company.executor": "Run",
+    "Python.Create multiple employee.executor": "Run",
+    "Python.CreateEmpJson.executor": "Run",
+    "Python.CreateEmpmaster.executor": "Run",
+    "Python.CreateErpUser.executor": "Run",
+    "Python.CreateSingleEmp (1).executor": "Run",
+    "Python.CreateSingleEmp.executor": "Run",
+    "Python.Employee master.executor": "Run",
+    "Python.FunctionsDemo.executor": "Run",
+    "Python.Incode.executor": "Run",
+    "Python.Login.executor": "Run",
+    "Python.MultipleSO.executor": "Run",
+    "Python.SOMultipleitem.executor": "Run",
+    "Python.SO_Send_Approval.executor": "Run",
+    "Python.Singlejsonemp.executor": "Run",
+    "Python.createsingleemp.executor": "Run",
+    "Python.emp mastr test.executor": "Run",
+    "Python.final Employee master (1).executor": "Run",
+    "Python.final Employee master.executor": "Run",
+    "Python.python datatypes.executor": "Run",
+    "Python.string in python.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Employee-master__json",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dell\PycharmProjects\Woodfield Data Connect\bin" />
@@ -93,51 +94,7 @@
       <command value="python datatypes" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.CreateEmpJson">
-    <configuration name="Create multiple employee" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Woodfield Data Connect" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HR" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HR/Create multiple employee.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="CreateEmpJson" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Woodfield Data Connect" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HR" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HR/CreateEmpJson.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.createEmployeeAuto">
     <configuration name="CreateEmpmaster" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Woodfield Data Connect" />
       <option name="ENV_FILES" value="" />
@@ -147,33 +104,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HR" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scrap code" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\dell\PycharmProjects\Woodfield Data Connect\bin\CreateEmpmaster.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="CreateSingleEmp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Woodfield Data Connect" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HR" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\dell\PycharmProjects\Woodfield Data Connect\HR\CreateSingleEmp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrap code/CreateEmpmaster.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -191,11 +126,77 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scrap code" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrap code/Employee master.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SO_Send_Approval" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Woodfield Data Connect" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Sales" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Sales/SO_Send_Approval.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Singlejsonemp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Woodfield Data Connect" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HR" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\dell\PycharmProjects\Woodfield Data Connect\bin\Employee master.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HR/Singlejsonemp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="createEmployeeAuto" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Woodfield Data Connect" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HR" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\dell\PycharmProjects\Woodfield Data Connect\HR\createEmployeeAuto.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -206,11 +207,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.CreateEmpJson" />
-        <item itemvalue="Python.Create multiple employee" />
-        <item itemvalue="Python.CreateSingleEmp" />
-        <item itemvalue="Python.Employee master" />
+        <item itemvalue="Python.createEmployeeAuto" />
         <item itemvalue="Python.CreateEmpmaster" />
+        <item itemvalue="Python.Employee master" />
+        <item itemvalue="Python.Singlejsonemp" />
+        <item itemvalue="Python.SO_Send_Approval" />
       </list>
     </recent_temporary>
   </component>
@@ -230,18 +231,85 @@
       <option name="presentableId" value="Default" />
       <updated>1710829900873</updated>
     </task>
+    <task id="LOCAL-00001" summary="Emp master creation using json data">
+      <option name="closed" value="true" />
+      <created>1720002408895</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720002408895</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Emp master creation using json data">
+      <option name="closed" value="true" />
+      <created>1720002562352</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720002562352</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Emp master creation using json data">
+      <option name="closed" value="true" />
+      <created>1720889721272</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720889721272</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Emp master creation using json data">
+      <option name="closed" value="true" />
+      <created>1720889733964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720889733964</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Emp master creation using json data">
+      <option name="closed" value="true" />
+      <created>1720889753683</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720889753683</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="fa9d0bc0-b540-4639-818f-6e9236a870ab" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Create_SO_Checklist" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="fa9d0bc0-b540-4639-818f-6e9236a870ab">
           <value>
             <State />
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Emp master creation using json data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Emp master creation using json data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
