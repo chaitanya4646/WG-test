@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import StaleElementReferenceException
 
 # Initialize the WebDriver (assuming Chrome in this example)
 driver = webdriver.Chrome()
@@ -19,14 +20,14 @@ username = driver.find_element(By.CSS_SELECTOR, "#name")
 username.send_keys("SalesExecutive")
 
 password = driver.find_element(By.CSS_SELECTOR, "input[placeholder='Password']")
-password.send_keys("Pass@1234")
+password.send_keys("Pass@123")
 
 # Find and click the login button
 login_button = driver.find_element(By.CSS_SELECTOR, ".p-5")
 login_button.click()
 
 # Set up a range for iterations
-num_sales_orders = 3  # Example: Change this number as needed
+num_sales_orders = 1  # Example: Change this number as needed
 
 for order_number in range(1, num_sales_orders + 1):
     # Redirect to sales order page
@@ -41,140 +42,189 @@ for order_number in range(1, num_sales_orders + 1):
     )
     create_so_button.click()
 
-    # Enter details like customer name, transporter, etc.
+    # Handle StaleElementReferenceException for IWO Type
+    try:
+        iwotype = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Select an IWO Type']"))
+        )
+        iwotype.click()
+
+        iworesults = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+        )
+
+        for selectiwo in iworesults:
+            if "Export" in selectiwo.text:
+                selectiwo.click()
+                break
+
+    except StaleElementReferenceException:
+        print("Stale element encountered, retrying...")
+
+    salesperson = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Select an Sales Person']"))
+    )
+    salesperson.click()
+
+    salespersonresult = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+    )
+
+    for sperson in salespersonresult:
+        if "ssk" in sperson.text:
+            sperson.click()
+            break
+
+    # Delivery term
+    delivery_term = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Select an Delivery term']"))
+    )
+    delivery_term.click()
+
+    delivery_terms = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+    )
+
+    for determ in delivery_terms:
+        if "Ex Works (EXW)" in determ.text:
+            determ.click()
+            break
+
+    # Enter customer details
     customer_input = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='Select Customer']"))
     )
-    customer_input.send_keys("NHPC")
+    customer_input.send_keys("Usa Customer")
 
-    # Wait for dropdown options to appear
-    wait = WebDriverWait(driver, 10)
-    dropdown_results = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "ul[role='listbox'] li")))
-
-    # Select desired customer from dropdown
+    # Wait for dropdown options to appear and select desired customer
+    dropdown_results = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, "ul[role='listbox'] li"))
+    )
     for result in dropdown_results:
-        if "NHPC" in result.text:
+        if "Usa Customer" in result.text:
             result.click()
             break
 
-    # Continue with other inputs like transporter, mode of transport, etc.
+    # Fill other fields
+    driver.find_element(By.CSS_SELECTOR, "input[id='insurance,']").send_keys("WG")
+    driver.find_element(By.CSS_SELECTOR, "input[id='contactPerson,']").send_keys("CSS")
+    driver.find_element(By.CSS_SELECTOR, "#shippingAddress").send_keys("Nagar")
+    driver.find_element(By.CSS_SELECTOR, "#qualityRemark").send_keys("T&C testing certificate")
+    driver.find_element(By.CSS_SELECTOR, "#offerRemarks").send_keys("No")
     driver.find_element(By.CSS_SELECTOR, "#transporter").send_keys("VRL")
     driver.find_element(By.CSS_SELECTOR, "#modeOfTransport").send_keys("Air")
     driver.find_element(By.CSS_SELECTOR, "#destination").send_keys("Pune")
-    Cust_PO = f"PO{order_number:04d}"  # Unique customer PO for each iteration, formatted as PO0001, PO0002, etc.
+    Cust_PO = f"WSIL_SPAI12{order_number:04d}"  # Unique customer PO for each iteration
     driver.find_element(By.CSS_SELECTOR, "#customerPONumber").send_keys(Cust_PO)
     driver.find_element(By.CSS_SELECTOR, "input[placeholder='Select Customer PO Date']").send_keys('01-06-2024')
 
-    # Add items in the sales order
-    num_items = 2  # Example: Change this number as needed
+    # Warranty term
+    warrantyterms = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//span[normalize-space()='Select WarrantyTerm list']"))
+    )
+    warrantyterms.click()
 
+    wresults = WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+    )
+
+    for weterm in wresults:
+        if "Option for Particular date should be there" in weterm.text:
+            weterm.click()
+            break
+
+    # Add items in the sales order
+    num_items = 5  # Example: Change this number as needed
     for i in range(num_items):
-        # Add an item (example for selecting product type)
         add_item_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Add Item'] span[class='p-button-label p-c']"))
         )
         add_item_button.click()
 
-        # Select product type (example)
-        driver.find_element(By.CSS_SELECTOR,
-                            "body > div:nth-child(17) > div:nth-child(1) > div:nth-child(3) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)").click()
+        # Product type
+        product_type = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div[id='productType'] span[class='p-dropdown-label p-inputtext p-placeholder']"))
+        )
+        product_type.click()
 
-        # Wait for dropdown options to appear
-        time.sleep(1)
-        dropdown_type_results = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item")))
+        dropdown_type_results = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+        )
 
-        # Select desired product type from dropdown
         for result in dropdown_type_results:
-            if "Type 1" in result.text:
+            if "Bottom loading/ unloading Arm with Accessories" in result.text:
                 result.click()
                 break
 
-        # Product
-        driver.find_element(By.CSS_SELECTOR, "#product").send_keys("Loading arms")
+        driver.find_element(By.CSS_SELECTOR, "#product").send_keys("Loading ARM with joints parts")
+        driver.find_element(By.CSS_SELECTOR,"#service").send_keys("Oil")
+        driver.find_element(By.CSS_SELECTOR, "#description").send_keys("Loading ARM with joints parts for oil product")
+        driver.find_element(By.CSS_SELECTOR, "#unitRate").send_keys("500000")
 
         # Order type
-        order_type = driver.find_element(By.CSS_SELECTOR,
-                                         "body > div:nth-child(17) > div:nth-child(1) > div:nth-child(3) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)")
-        order_type.click()
-
-        # Wait for dropdown options to appear
-        time.sleep(1)
-        dropdown_type_results = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item")))
-
-        # Select desired product type from dropdown
-        for result in dropdown_type_results:
-            if "Overseas" in result.text:
-                result.click()
-                break
-
-        time.sleep(2)
-
-        # Description
-        driver.find_element(By.CSS_SELECTOR, "#description").send_keys("Marine loading arm")
-
-        # Unit rate
-        driver.find_element(By.CSS_SELECTOR, "#unitRate").send_keys("50000000")
-
-        # Extended rate
-        driver.find_element(By.CSS_SELECTOR, "#extendedRate").send_keys("50000100")
-
-        # Quantity
-        driver.find_element(By.CSS_SELECTOR, "#quantity").send_keys("5")
-
-        # Delivery type
-        delivery_type = driver.find_element(By.CSS_SELECTOR, "div[aria-label='Select Delivery Type']")
-        delivery_type.click()
-
-        # Wait for dropdown options to appear
-        time.sleep(1)
-        dropdown_type_results = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item")))
-
-        # Select desired product type from dropdown
-        for result in dropdown_type_results:
-            if "LD Clause" in result.text:
-                result.click()
-                break
-
-        driver.find_element(By.CSS_SELECTOR, "#qualityRemark").send_keys("Must tested with Iron")
-
-        # Optional: Add a small delay between iterations
-        time.sleep(1)
-
-        # Submit the form
-        save_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Save'] span[class='p-button-label p-c']"))
+        ordertype = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div[id='orderType'] span[class='p-dropdown-label p-inputtext p-placeholder']"))
         )
-        save_button.click()
+        ordertype.click()
 
-    # Save as draft
-    save_as_draft_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[aria-label='Save As Draft']"))
+        ordertypes = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+        )
+
+        for orderresult in ordertypes:
+            if "Service" in orderresult.text:
+                orderresult.click()
+                break
+
+        # Quality checkbox (if applicable)
+        docrequired = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div[id='documentation'] div[class='p-checkbox-box']"))
+        )
+        docrequired.click()
+
+        driver.find_element(By.CSS_SELECTOR, "#quantity").send_keys("2")
+        time.sleep(2)
+        # Delivery type
+        deliverytype = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "div[id='deliveryType'] span[class='p-dropdown-label p-inputtext p-placeholder']"))
+        )
+        deliverytype.click()
+
+        deliverytyresults = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".p-dropdown-item"))
+        )
+
+        for dtype in deliverytyresults:
+            if "Delivery date based on approval of document" in dtype.text:
+                dtype.click()
+                break
+
+        weeks = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#deliveryWeeks"))
+        )
+        weeks.send_keys("2")
+
+        # Scroll to the qualityterms element before interacting
+        qualityterms_element = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH,
+                                            "(//textarea[@id='qualityRemark'])[2]"))
+        )
+        driver.execute_script("arguments[0].scrollIntoView(true);", qualityterms_element)
+        qualityterms_element.send_keys("STANDERD TESTING")
+
+        # Click save item button
+        save_item_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "#save"))
+        )
+        save_item_button.click()
+
+    # checklist
+    checklist_button = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "#saveAsDraft"))
     )
-    save_as_draft_button.click()
+    checklist_button.click()
 
-    time.sleep(1)
-
-    # Assert whether the created Customer PO is showing in the listing or not
-    # Wait for the table to load and locate the table row elements that contain the Customer PO numbers
-    wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "tbody tr")))
-
-    # Locate the elements
-    list_of_PO_elements = driver.find_elements(By.CSS_SELECTOR, "tbody tr td:nth-child(2)")
-
-    # Extract text from each element
-    list_of_PO = [element.text for element in list_of_PO_elements]
-
-    # Print the list for debugging
-    print("List of POs:", list_of_PO)
-
-    # Check if the Customer PO is in the list
-    if Cust_PO in list_of_PO:
-        print("Success: SO created successfully")
-    else:
-        print("Error: SO not created")
-
-    # Optional: Add a small delay before starting the next iteration
-    time.sleep(1)
+    time.sleep(2)  # Adding a short delay to ensure the order is saved before moving to the next iteration
 
 # Close the WebDriver
 driver.quit()
